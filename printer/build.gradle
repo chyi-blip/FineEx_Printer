@@ -33,7 +33,7 @@ publish {
     artifactId = 'printer'     //compile引用时的第2部分项目名
     publishVersion = '1.0.0'    //compile引用时的第3部分版本号
     desc = '发网打印服务'
-    website = 'https://github.com/wzgiceman/Rxbus'
+    website = 'https://github.com/cy757120553/FineEx_Printer.git'
 }
 
 
