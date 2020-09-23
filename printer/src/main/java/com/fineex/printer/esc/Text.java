@@ -4,7 +4,8 @@ import android.util.Log;
 
 import com.fineex.printer.Port;
 
-import static com.fineex.printer.FineExPrinter.*;
+import static com.fineex.printer.FineExPrinter.ALIGN;
+import static com.fineex.printer.FineExPrinter.PRINTER_TYPE;
 
 
 public class Text extends BaseESC {

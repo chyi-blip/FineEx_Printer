@@ -4,7 +4,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
 
-
 import com.fineex.printer.FineExPrinter;
 import com.fineex.printer.Port;
 import com.fineex.printer.common.ImageConvert;
@@ -78,7 +77,7 @@ public class Image extends BaseESC {
 	// / 2)图像高度超过打印画板高度高度会导致上部分图像丢失
 	// / </summary>
 	private boolean _drawOut(int image_width_dots, int image_height_dots,
-			ESC.IMAGE_ENLARGE mode, byte[] image_data) 
+                             ESC.IMAGE_ENLARGE mode, byte[] image_data)
 	{
 		int Y_Byte = (image_height_dots - 1) / 8 + 1; // 位图Y轴方向象素点的字节素；
 		int X_Byte = (image_width_dots - 1) / 8 + 1; // 位图X轴方向象素点的字节素，表示需要X_Byte幅8
@@ -106,7 +105,7 @@ public class Image extends BaseESC {
 	}
 	
 	private boolean _drawOut(int image_width_dots, int image_height_dots,
-			ESC.IMAGE_ENLARGE mode, char[] image_data) 
+                             ESC.IMAGE_ENLARGE mode, char[] image_data)
 	{
 		int Y_Byte = (image_height_dots - 1) / 8 + 1; // 位图Y轴方向象素点的字节素；
 		int X_Byte = (image_width_dots - 1) / 8 + 1; // 位图X轴方向象素点的字节素，表示需要X_Byte幅8
@@ -139,7 +138,7 @@ public class Image extends BaseESC {
 	// / 2)由于图像并没有立即输出，还可以继续在相应的x,y坐标绘制打印对象
 	// / </summary>
 	public boolean drawOut(int x, int y, int image_width_dots,
-			int image_height_dots, ESC.IMAGE_ENLARGE mode, byte[] image_data) 
+                           int image_height_dots, ESC.IMAGE_ENLARGE mode, byte[] image_data)
 	{
 		if (!setXY(x, y))
 			return false;
@@ -152,7 +151,7 @@ public class Image extends BaseESC {
 	// / 2)由于图像并没有立即输出，还可以继续在相应的x,y坐标绘制打印对象
 	// / </summary>
 	public boolean drawOut(int x, int y, int image_width_dots,
-			int image_height_dots, ESC.IMAGE_ENLARGE mode, char[] image_data) {
+                           int image_height_dots, ESC.IMAGE_ENLARGE mode, char[] image_data) {
 		if (!setXY(x, y))
 			return false;
 		return _drawOut(image_width_dots, image_height_dots, mode, image_data);
@@ -243,13 +242,13 @@ public class Image extends BaseESC {
 	// / 1)适用于所有厂家及型号的POS打印机
 	// / </summary>
 	private boolean _printOut(int x, int width, int height,
-			ESC.IMAGE_MODE mode, byte[] data, int sleep_time) {
+                              ESC.IMAGE_MODE mode, byte[] data, int sleep_time) {
 		if (width > this.maxDots) {
 			return false;
 		}
 
 		if (mode == ESC.IMAGE_MODE.SINGLE_WIDTH_8_HEIGHT
-				|| mode == ESC.IMAGE_MODE.DOUBLE_WIDTH_8_HEIGHT) 
+				|| mode == ESC.IMAGE_MODE.DOUBLE_WIDTH_8_HEIGHT)
 		{
 		} 
 		else 

@@ -1,6 +1,5 @@
 package com.fineex.printer.jpl;
 
-import com.fineex.printer.FineExPrinter;
 import com.fineex.printer.FineExPrinter.ALIGN;
 import com.fineex.printer.jpl.JPL.ROTATE;
 
