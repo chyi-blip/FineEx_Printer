@@ -147,7 +147,7 @@ public class Image extends BaseJPL {
      * @param bitmap 源
      * @param dst_w  输出宽度
      * @param dst_h  输出高度
-     * @return
+     * @return 位图
      */
     public static Bitmap imageScale(Bitmap bitmap, int dst_w, int dst_h) {
         int src_w = bitmap.getWidth();

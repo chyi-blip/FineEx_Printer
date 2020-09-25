@@ -7,3 +7,13 @@ maven { url 'https://dl.bintray.com/novoda-oss/snapshots/' }
 maven { url 'https://dl.bintray.com/cy757120553/maven/' }
 
 implementation 'com.fineex:printer:last-version'
+
+
+1、前提你要在bintray网站注册账号
+2、Android studio命令窗口中输入如下命令运行：gradlew install， 提示BUILD SUCCESSFUL后，
+   继续运行这行命令： gradlew bintrayUpload，提示BUILD SUCCESSFUL后你的bintray网站就有你这个共享库啦
+3、然后到你的bintray网站上把你上面上传的共享库添加到Jcenter就可以啦
+
+如果没有看懂的可以参照我的博客一步步操作吧
+超详细的Android Studio项目发布到Jcenter喂饭级教程：https://blog.csdn.net/liu_xi_xin/article/details/105648040
+
