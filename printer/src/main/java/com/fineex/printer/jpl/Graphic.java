@@ -4,7 +4,7 @@ import android.graphics.Point;
 
 import com.fineex.printer.jpl.JPL.COLOR;
 
-public class Graphic extends BaseJPL {
+public class Graphic extends BaseJPL{
 
 	public Graphic(JPL_Param param) {
 		super(param);

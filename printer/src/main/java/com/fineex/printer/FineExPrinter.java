@@ -5,16 +5,10 @@ import android.bluetooth.BluetoothAdapter;
 import com.fineex.printer.esc.ESC;
 import com.fineex.printer.jpl.JPL;
 
-/**
- * @Author： Chen
- * @Date： 2020/9/23
- * @Desc：
- */
-public class FineExPrinter {
-    private static FineExPrinter mInstance;
 
-    /**
-     * 打印类型枚举
+public class FineExPrinter {
+    /*
+     * 枚举类型：打印机型号
      */
     public static enum PRINTER_TYPE {
         VMP02,
@@ -25,7 +19,7 @@ public class FineExPrinter {
         ULT1131_IC,
     }
 
-    /**
+    /*
      * 枚举类型：对齐方式
      */
     public static enum ALIGN {
@@ -43,18 +37,17 @@ public class FineExPrinter {
     private boolean isInit = false;
     private byte[] state = {0, 0};
 
-    private FineExPrinter() {
+    /*
+     * 构造函数
+     */
+    public FineExPrinter() {
 
     }
 
-    public static FineExPrinter getInstance() {
-        if (mInstance == null) {
-            mInstance = new FineExPrinter();
-        }
-        return mInstance;
-    }
-
-    private FineExPrinter(String btDeviceString) {
+    /*
+     * 构造函数
+     */
+    public FineExPrinter(String btDeviceString) {
         if (btDeviceString == null) {
             isInit = false;
             return;
@@ -66,13 +59,6 @@ public class FineExPrinter {
         }
         port = new Port(btAdapter, btDeviceString);
         isInit = true;
-    }
-
-    public static FineExPrinter getInstance(String btDeviceString) {
-        if (mInstance == null) {
-            mInstance = new FineExPrinter(btDeviceString);
-        }
-        return mInstance;
     }
 
     public void initPrinter(String btDeviceString){
@@ -89,6 +75,8 @@ public class FineExPrinter {
         isInit = true;
     }
 
+    //打开端口
+    //注意：最好不要将此函数放在Activity的onCreate函数中，因为bluetooth connect时会有定的延时，有时会造成页面显示很慢，而误认为没有点击按钮
     public boolean open(PRINTER_TYPE printer_type) {
         if (!isInit)
             return false;
@@ -147,6 +135,10 @@ public class FineExPrinter {
         return port.getState();
     }
 
+    /*
+     * 唤醒打印机
+     * 注意:部分手持蓝牙连接第一次不稳定，会造成开头字符乱码，可以通常这个方法来避免此问题
+     */
     public boolean wakeUp() {
         if (!isInit)
             return false;
@@ -161,6 +153,9 @@ public class FineExPrinter {
         return esc.text.init();
     }
 
+    /*
+     * 走纸到右黑标
+     */
     public boolean feedRightMark() {
         if (!isInit)
             return false;
@@ -178,6 +173,9 @@ public class FineExPrinter {
         }
     }
 
+    /*
+     * 走纸到左黑标
+     */
     public boolean feedLeftMark() {
         if (!isInit)
             return false;
@@ -191,6 +189,9 @@ public class FineExPrinter {
         }
     }
 
+    /*
+     * 获取打印机状态
+     */
     public boolean getPrinterState(int timeout_read) {
         if (!isInit)
             return false;
@@ -215,4 +216,5 @@ public class FineExPrinter {
         }
         return true;
     }
+
 }
