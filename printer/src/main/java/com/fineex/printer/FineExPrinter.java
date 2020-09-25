@@ -7,6 +7,9 @@ import com.fineex.printer.jpl.JPL;
 
 
 public class FineExPrinter {
+
+    private static FineExPrinter instance;
+
     /*
      * 枚举类型：打印机型号
      */
@@ -37,17 +40,16 @@ public class FineExPrinter {
     private boolean isInit = false;
     private byte[] state = {0, 0};
 
-    /*
-     * 构造函数
-     */
-    public FineExPrinter() {
-
+    public static FineExPrinter getInstance(String btDeviceString) {
+        if (instance == null)
+            instance = new FineExPrinter(btDeviceString);
+        return instance;
     }
 
     /*
      * 构造函数
      */
-    public FineExPrinter(String btDeviceString) {
+    private FineExPrinter(String btDeviceString) {
         if (btDeviceString == null) {
             isInit = false;
             return;
@@ -61,7 +63,7 @@ public class FineExPrinter {
         isInit = true;
     }
 
-    public void initPrinter(String btDeviceString){
+    public void initPrinter(String btDeviceString) {
         if (btDeviceString == null) {
             isInit = false;
             return;
