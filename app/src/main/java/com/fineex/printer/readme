@@ -1,5 +1,3 @@
-执行上传到maven ： gradlew clean build bintrayUpload -PbintrayUser=cy757120553 -PbintrayKey=9d4730b0417ff32000dd5478323d4c62f3029469 -PdryRun=false
-
 使用
 //bintray环境
 maven { url 'https://dl.bintray.com/novoda-oss/snapshots/' }

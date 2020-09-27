@@ -18,28 +18,21 @@ import java.util.ArrayList;
 import java.util.concurrent.CopyOnWriteArraySet;
 
 
-
 /**
  * @author： Chen
  * Date： 2020/7/6
  * Desc：
  */
-public abstract class PrinterService extends Service {
+public abstract class BasePrinterService extends Service {
     public static final String PRINT_INFO = "PRINT_INFO";
     private String CHANNEL_ONE_ID = "1001";
     private CharSequence CHANNEL_ONE_NAME = "WMS";
     private CopyOnWriteArraySet<Printer> printInfoQueue = new CopyOnWriteArraySet<>();
     private boolean isEnd;
     private Thread thread;
+    private int count = 0;
 
-    private Handler handler = new Handler(getMainLooper()) {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            toast("打印失败提示：" + msg.obj.toString());
-            stopSelf();
-        }
-    };
+    protected Handler handler;
 
 
     @Override
@@ -82,9 +75,12 @@ public abstract class PrinterService extends Service {
                     try {
                         Log.d("FineEx", "打印服务工作中。。。");
                         if (printInfoQueue.isEmpty()) {
-                            Thread.sleep(1000);
+                            Thread.sleep(100);
+                            count++;
+                            if (count > 2) stopSelf();
                             continue;
                         }
+                        count = 0;
                         Printer printer = printInfoQueue.iterator().next();
                         FineExPrinter fineExPrinter = FineExPrinter.getInstance(getDeviceMAC());
                         if (BluetoothAdapter.getDefaultAdapter().isDiscovering())
@@ -172,18 +168,6 @@ public abstract class PrinterService extends Service {
             toast("加入打印队列成功，请稍后");
         }
         return START_NOT_STICKY;
-    }
-
-    public static void startPrintService(Context context, ArrayList<Printer> printInfoEntities) {
-        Intent intent = new Intent();
-        intent.setClass(context, PrinterService.class);
-        intent.putExtra(PRINT_INFO, printInfoEntities);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            //android8.0以上通过startForegroundService启动service
-            context.startForegroundService(intent);
-        } else {
-            context.startService(intent);
-        }
     }
 
     @Override
