@@ -17,6 +17,11 @@ public class KeyValue implements Parcelable {
     private String Key;
     private String Value;
 
+    public KeyValue(String key, String value) {
+        Key = key;
+        Value = value;
+    }
+
     public String getKey() {
         return Key;
     }

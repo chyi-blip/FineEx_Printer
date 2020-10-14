@@ -7,6 +7,7 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.fineex.printer.bean.InMarkPrintBean;
+import com.fineex.printer.bean.KeyValue;
 import com.fineex.printer.bean.MarkPrintBean;
 import com.fineex.printer.bean.PreTrayBean;
 
@@ -24,7 +25,32 @@ public class MainActivity extends AppCompatActivity {
 
     public void intoMark(View view) {
         printList.clear();
-        printList.add(new InMarkPrintBean(getResources()));
+        InMarkPrintBean bean = new InMarkPrintBean(getResources());
+        bean.setBoxMark("XM56856545156");
+        bean.setWarehouseMember("发网仓库发网会员");
+        bean.setInCode("RK46854689");
+        bean.setSyncId("465656464");
+        bean.setCommodityName("测试商品");
+        bean.setBarCode("56859874");
+        ArrayList<KeyValue> keyValues = new ArrayList<>();
+        keyValues.add(new KeyValue("键名键名", "54689596565"));
+        keyValues.add(new KeyValue("键名键名", "54689596565"));
+        keyValues.add(new KeyValue("键名键名", "54689596565"));
+        keyValues.add(new KeyValue("键名键名", "54689596565"));
+        keyValues.add(new KeyValue("键名键名", "54689596565"));
+        keyValues.add(new KeyValue("键名键名", "54689596565"));
+        bean.setMarkConfig(keyValues);
+        bean.setMemberNo("56859874");
+        bean.setBoxGauge("545");
+        bean.setBatchCode("BH4546556564");
+        bean.setShelfLife("5665");
+        bean.setTentativePeriod("5656");
+        bean.setCount("2");
+        bean.setRemark("五百万现金");
+        bean.setPrintUser("小明");
+        bean.setPrintDate("2019-01-01 12:00");
+        bean.setOrderDate("2019-01-01");
+        printList.add(bean);
 
         PrinterService.startPrintService(this, printList);
     }
