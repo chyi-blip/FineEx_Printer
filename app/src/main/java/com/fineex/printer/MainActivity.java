@@ -117,8 +117,6 @@ public class MainActivity extends AppCompatActivity {
         bean.setStoreCodeName("46556564T湖北武汉海林广场店");
 
         printList.add(bean);
-        printList.add(bean);
-
         PrinterService.startPrintService(this, printList);
     }
 
