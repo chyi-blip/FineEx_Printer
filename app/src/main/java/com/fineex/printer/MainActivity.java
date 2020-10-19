@@ -13,6 +13,9 @@ import com.fineex.printer.bean.PreTrayBean;
 
 import java.util.ArrayList;
 
+/**
+ * fc测试
+ */
 public class MainActivity extends AppCompatActivity {
 
     private ArrayList<Printer> printList = new ArrayList<>();
