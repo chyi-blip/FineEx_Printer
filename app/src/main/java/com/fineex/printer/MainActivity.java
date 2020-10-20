@@ -13,9 +13,6 @@ import com.fineex.printer.bean.PreTrayBean;
 
 import java.util.ArrayList;
 
-/**
- * fc测试
- */
 public class MainActivity extends AppCompatActivity {
 
     private ArrayList<Printer> printList = new ArrayList<>();
@@ -28,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void intoMark(View view) {
         printList.clear();
-        InMarkPrintBean bean = new InMarkPrintBean(getResources());
+        InMarkPrintBean bean = new InMarkPrintBean();
         bean.setBoxMark("XM56856545156");
         bean.setWarehouseMember("发网仓库发网会员");
         bean.setInCode("RK46854689");
@@ -60,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void boxCommonMark(View view) {
         printList.clear();
-        MarkPrintBean bean = new MarkPrintBean(getResources());
+        MarkPrintBean bean = new MarkPrintBean();
         bean.setStoreName("T湖北武汉海林广场店");
         bean.setTemplateType("9801");
         bean.setStoreCode("456565");
@@ -93,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void boxXBLMark(View view) {
         printList.clear();
-        MarkPrintBean bean = new MarkPrintBean(getResources());
+        MarkPrintBean bean = new MarkPrintBean();
         bean.setStoreName("T湖北武汉海林广场店");
         bean.setTemplateType("9801");
         bean.setStoreCode("456565");

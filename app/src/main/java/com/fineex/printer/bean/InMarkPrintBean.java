@@ -1,7 +1,6 @@
 package com.fineex.printer.bean;
 
 
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.os.Parcel;
@@ -9,6 +8,7 @@ import android.text.TextUtils;
 
 import com.fineex.printer.FineExPrinter;
 import com.fineex.printer.Printer;
+import com.fineex.printer.PrinterApplication;
 import com.fineex.printer.QRCodeUtils;
 import com.fineex.printer.R;
 import com.fineex.printer.jpl.Barcode;
@@ -45,7 +45,6 @@ public class InMarkPrintBean implements Printer {
     private String Remark;
     private String PrintUser;
     private String PrintDate;
-    private Resources resources;
 
     public String getBoxMark() {
         if (TextUtils.isEmpty(BoxMark)) return "";
@@ -199,8 +198,7 @@ public class InMarkPrintBean implements Printer {
         this.OrderDate = OrderDate;
     }
 
-    public InMarkPrintBean(Resources resources) {
-        this.resources = resources;
+    public InMarkPrintBean() {
     }
 
     public static final int PRINT_WIDTH = 556;
@@ -213,7 +211,7 @@ public class InMarkPrintBean implements Printer {
         int fontHeight = 36;
 
         printer.jpl.page.start(0, 0, PRINT_WIDTH, PRINT_HEIGHT, Page.PAGE_ROTATE.x0);
-        printer.jpl.image.drawOut(6, 0, resources, R.mipmap.fineex_print_logo, Image.IMAGE_ROTATE.ANGLE_0);
+        printer.jpl.image.drawOut(6, 0, PrinterApplication.getInstance().getResource(), R.mipmap.fineex_print_logo, Image.IMAGE_ROTATE.ANGLE_0);
 
         printer.jpl.text.drawOut(FineExPrinter.ALIGN.RIGHT, 8, "单据日期：" + getOrderDate(), 22, false, false, false, false, TEXT_ENLARGE.x1, TEXT_ENLARGE.x1, JPL.ROTATE.ROTATE_0);
 
