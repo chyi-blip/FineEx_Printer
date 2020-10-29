@@ -30,7 +30,7 @@ public class Text extends BaseJPL {
     }
 
     public boolean drawOut(int x, int y, String text,
-                           int fontHeight,boolean bold) {
+                           int fontHeight, boolean bold) {
         return drawOut(x, y, text, fontHeight, bold, false, false, false, TEXT_ENLARGE.x1, TEXT_ENLARGE.x1, JPL.ROTATE.ROTATE_0);
     }
 
