@@ -8,6 +8,7 @@ import android.text.TextUtils;
 
 import com.fineex.printer.FineExPrinter;
 import com.fineex.printer.Printer;
+import com.fineex.printer.PrinterApplication;
 import com.fineex.printer.R;
 import com.fineex.printer.jpl.Barcode;
 import com.fineex.printer.jpl.Image;
@@ -71,7 +72,6 @@ public class MarkPrintBean implements Printer {
     private String DocumentDate;
     private String OrderDate;
     private String TemplateType = "9802";
-    private Resources resources;
 
     public String getStoreName() {
         if (TextUtils.isEmpty(StoreName)) return "";
@@ -280,8 +280,7 @@ public class MarkPrintBean implements Printer {
         this.DocumentDate = OrderDate;
     }
 
-    public MarkPrintBean(Resources resources) {
-        this.resources = resources;
+    public MarkPrintBean() {
     }
 
     public static final int PRINT_WIDTH = 556;
@@ -302,7 +301,7 @@ public class MarkPrintBean implements Printer {
         int fontHeight = 36;
 
         printer.jpl.page.start(0, 0, PRINT_WIDTH, PRINT_HEIGHT, Page.PAGE_ROTATE.x0);
-        printer.jpl.image.drawOut(6, 0, resources, R.mipmap.fineex_print_logo, Image.IMAGE_ROTATE.ANGLE_0);
+        printer.jpl.image.drawOut(6, 0, PrinterApplication.getInstance().getResource(), R.mipmap.fineex_print_logo, Image.IMAGE_ROTATE.ANGLE_0);
 
         printer.jpl.text.drawOut(FineExPrinter.ALIGN.RIGHT, 0, "单据日期：" + getOrderDate(), 22, false, false, false, false, TEXT_ENLARGE.x1, TEXT_ENLARGE.x1, JPL.ROTATE.ROTATE_0);
 

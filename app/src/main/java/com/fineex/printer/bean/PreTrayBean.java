@@ -28,13 +28,13 @@ public class PreTrayBean implements Printer {
      * PrintDate : 2020-01-01 12:00
      */
 
-    private String CommodityUnitCode = "7867887";
-    private String TrayCode = "7867887";
+    private String CommodityUnitCode = "CP1234567891234-2";
+    private String TrayCode = "YBTP123456789";
     private String WarehouseName = "测试仓库";
     private String MemberName = "测试会员";
-    private String Amount = "123";
+    private String Amount = "9999";
     private String CommodityUnitDetail = " A*1|B*2";
-    private String PrintUser = "四火";
+    private String PrintUser = "名字长度";
     private String PrintDate = "2020-01-01 12:00";
 
     public String getCommodityUnitCode() {
@@ -99,8 +99,8 @@ public class PreTrayBean implements Printer {
         printer.jpl.barcode.code128(FineExPrinter.ALIGN.CENTER, 54, 50, Barcode.BAR_UNIT.x2, Barcode.BAR_ROTATE.ANGLE_0, getTrayCode());
 
         printer.jpl.text.drawOut(6, textStartY(120, 40, 1), "成品号：" + getCommodityUnitCode(), 30);
-        printer.jpl.text.drawOut(430, textStartY(132, fontHeight, 1), "数量：", fontSize);
-        printer.jpl.text.drawOut(505, textStartY(120, 50, 1), getAmount(), 50, true);
+        printer.jpl.text.drawOut(410, textStartY(132, fontHeight, 1), "数量：", fontSize);
+        printer.jpl.text.drawOut(480, textStartY(120, 50, 1), getAmount(), 40, true);
 
         String detail = "明细：" + getCommodityUnitDetail();
         int length = detail.length();
