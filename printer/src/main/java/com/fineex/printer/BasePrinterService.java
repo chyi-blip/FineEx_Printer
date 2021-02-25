@@ -75,7 +75,7 @@ public abstract class BasePrinterService extends Service {
                     try {
                         Log.d("FineEx", "打印服务工作中。。。");
                         if (printInfoQueue.isEmpty()) {
-                            Thread.sleep(100);
+                            Thread.sleep(1000);
                             count++;
                             if (count > 2) stopSelf();
                             continue;

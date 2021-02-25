@@ -235,7 +235,7 @@ public class InMarkPrintBean implements Printer {
 
         //入库箱号及其条码
         printer.jpl.text.drawOut(12, 69, "箱号：", 22);
-        printer.jpl.barcode.code128(FineExPrinter.ALIGN.CENTER, 50, 50, Barcode.BAR_UNIT.x2, Barcode.BAR_ROTATE.ANGLE_0, getBoxMark());
+        printer.jpl.barcode.code128(FineExPrinter.ALIGN.CENTER, 50, 50, Barcode.BAR_UNIT.x2, Barcode.BAR_ROTATE.ANGLE_180, getBoxMark());
         printer.jpl.text.drawOut(FineExPrinter.ALIGN.CENTER, 106, getBoxMark(), 22, false, false, false, false, TEXT_ENLARGE.x1, TEXT_ENLARGE.x1, JPL.ROTATE.ROTATE_0);
         printer.jpl.graphic.line(new Point(6, 140), new Point(PRINT_WIDTH, 140), lineWidth);
 
